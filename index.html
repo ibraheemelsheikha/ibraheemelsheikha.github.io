@@ -140,14 +140,16 @@ License URL: https://creativecommons.org/licenses/by/4.0/
           <div class="card mx-0 p-4 mb-5" style="border-color: #17a2b8; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
             <div class=" resume-content mr-auto">
               <h4 class="mb-3">AI & NLP Research Intern @ ECE UofT</h4>
-              <p class="mb-5" style="max-width: 500px; color: #000000;">Building a Chrome extension for Piazza that
-                leverages AI and NLP to capture student questions in real
-                time and surfaces the top‑N most relevant past discussions for immediate reference. Implementing
-                semantic searching by applying transformer‑based sentence embeddings and cosine similarity ranking to
-                match new queries with existing threads, ensuring high‑precision recommendations. Awarded the Edgar
-                McAllister Foundation Undergraduate Summer Research Fellowship, which is only awarded to two students
-                across all second, third and fourth year applicants. Working under the supervision of Professor Salma
-                Emara.</p>
+              <p class="mb-5" style="max-width: 500px; color: #000000;">Building a hybrid Piazza search engine with
+                an end-to-end Python pipeline to make any course’s Piazza archive instantly searchable.
+                Implements data ingestion and chunking by scraping questions and answers into a JSON, and splitting each
+                post into 2–3-sentence sliding-window chunks. Implements dual indexing using BM25 for fast keyword
+                lookup and MiniLM embeddings in a Chroma vector store for
+                semantic search. Fuses lexical and semantic ranks into a single score to surface the top-N most relevant
+                posts using the RRF reranking algorithm. Designing for either a Chrome extension or chatbot UI, with an
+                optional LLM layer for on-the-fly answer generation.
+                Awarded Edgar McAllister Foundation Undergraduate Summer Research Fellowship (one of two selected
+                across all first, second, and third-year ECE applicants). Supervised by Professor Salma Emara</p>
             </div>
             <div class="resume-date text-md-right">
               <span class="text-primary">May 2025 - Present</span>

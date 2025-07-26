@@ -633,13 +633,13 @@ License URL: https://creativecommons.org/licenses/by/4.0/
                     board, and emplyed ModelSim (for pre-synthesis timing analysis) and DESim (for board-accurate
                     simulation) to validate clock-cycle behaviour. All testbenches were written in Verilog.</p>
                   <h2>Testing and Challenges</h2>
-                  <p class="mb-5" style="max-width: 500px; color: #000000;">Debugging brought a lot of hurdles, notable
-                    misleading waveform captures in ModelSum when tracing control signals, and subtle timing mismatches
+                  <p class="mb-5" style="max-width: 500px; color: #000000;">Debugging brought a lot of hurdles, notably
+                    misleading waveform captures in ModelSim when tracing control signals, and subtle timing mismatches
                     that initially caused the text on the VGA to flicker and for text to go off-screen. Through
                     iterative inspection and incremental testbench augmentation, we identified errors and fine-tuned the
-                    Verilog code. As a final proof of correctness, a sample Fibonacci-sequence was loaded into into
+                    Verilog code. As a final proof of correctness, a sample Fibonacci-sequence was loaded into
                     instruction memory and the register traces were observed on the VGA output (shown in the GIF to the
-                    left), confirming not only arithmetic accuracy, but also that memory reads/writes, branch logic, VGA
+                    left), confirming not only arithmetic accuracy, but memory reads/writes, branch logic, VGA
                     display, and memory arbitration were functioning flawlessly.</p>
                   <ul class="list-inline item-details">
                     <li>Date:

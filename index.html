@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ibraheem El Sheikha | Portfolio</title>
     <link rel="icon" type="image/x-icon" href="favicon.png">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <style>
         :root {
             --bg-color: #0f172a;
@@ -148,8 +151,10 @@
             color: var(--accent-color);
         }
 
+        /* TIGHTENED GLOBAL SECTION PADDING */
         section {
-            padding: 6rem 5% 4rem;
+            padding: 4rem 5% 2rem;
+            /* Reduced to pull sections closer together */
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -179,8 +184,10 @@
             margin-bottom: 2rem;
         }
 
+        /* REMOVED 100vh MIN-HEIGHT */
         #about {
-            min-height: 100vh;
+            padding-top: 10rem;
+            /* Fixed cushion so it clears the sticky nav bar */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -189,30 +196,6 @@
         #about p {
             font-size: 1.25rem;
             max-width: 1100px;
-        }
-
-        .about-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-            max-width: 1100px;
-        }
-
-        .about-gallery img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            background-color: #0f172a;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: zoom-in;
-        }
-
-        .about-gallery img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
         .card {
@@ -298,6 +281,10 @@
             color: var(--text-secondary);
             font-style: italic;
             border-bottom: 1px solid #475569;
+        }
+
+        img {
+            cursor: zoom-in;
         }
 
         .project-content {
@@ -674,22 +661,30 @@
     <section id="about">
         <h1>Ibraheem El Sheikha</h1>
         <div class="subtitle">Computer Engineering (BASc) | FPGA Software Engineering Intern</div>
-        <p>I am a third-year Computer Engineering student at the University of Toronto. Passionate in processor
-            architecture, embedded systems, FPGAs, AI, and software development, I am currently applying my skills
-            during my 16-month PEY Co-op as an FPGA Software Engineering Intern at Microchip Technology. Outside of
-            school and work, I am a huge basketball fan. I play D1 intramurals for the U of T Engineering team, and I
-            love watching the NBA (Go Raptors!).</p>
+        <p>Third-year computer engineering student passionate in computer architecture, embedded systems, FPGAs, and AI
+            applications. My work has involved RTL programming, FPGA flows, microcontroller programming, applied LLM
+            systems, applied
+            research, and engineering education.</p>
+    </section>
 
-        <!-- --- NEW: ABOUT ME IMAGE GALLERY --- -->
-        <div class="about-gallery">
-            <img src="img\burjkhalifa.jpg" alt="Travel to Dubai">
-            <img src="img\raptors.jpeg" alt="Raptors game">
-            <img src="img\eiffeltower.JPG" alt="Travel to Paris">
+    <section id="education">
+        <h2>Education</h2>
+        <div class="card" style="border-left-color: #94a3b8; cursor: default;">
+            <div class="date-badge">Sept. 2023 - Present</div>
+            <h3>Bachelor of Applied Science (BASc) in Computer Engineering</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">University of Toronto</p>
+            <p><strong>Techincal Courses:</strong> Computer Organization (RISC-V Assembly, Embedded C), Digital
+                Systems (Verilog, FPGA programming), Programming Fundamentals (C++), Computer Fundamentals (C),
+                Operating Systems (Linux), Data Structures and Algorithms, Digital Electronics, Computer Hardware,
+                Embedded Systems, Computer Networks.</p>
+            <p style="margin-top: 1rem;"><strong>Research Course:</strong> Thesis: PiazzaPlus - Enhancing Piazza Search
+                with Semantic Matching</p>
+            <p style="margin-top: 1rem;"><strong>Dean's Honours List </strong> (2023, 2024, 2025, 2026)</p>
         </div>
     </section>
 
     <section id="experience">
-        <h2>Professional Experience</h2>
+        <h2>Experience</h2>
 
         <div class="card expandable">
             <div class="date-badge">May 2026 - Present</div>
@@ -738,22 +733,8 @@
         </div>
     </section>
 
-    <section id="education">
-        <h2>Education</h2>
-        <div class="card" style="border-left-color: #94a3b8; cursor: default;">
-            <div class="date-badge">Sept. 2023 - Present</div>
-            <h3>Bachelor of Applied Science (BASc) in Computer Engineering</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">University of Toronto | PEY Co-op</p>
-            <p><strong>Relevant coursework:</strong> Computer Organization (RISC-V Assembly, Embedded C), Digital
-                Systems (Verilog, FPGA programming), Programming Fundamentals (C++), Computer Fundamentals (C),
-                Operating Systems (Linux), Data Structures and Algorithms, Digital Electronics, Computer Hardware,
-                Embedded Systems, Computer Networks.</p>
-            <p style="margin-top: 1rem;"><strong>Dean's Honours List </strong> (2023, 2024, 2025, 2026)</p>
-        </div>
-    </section>
-
     <section id="projects">
-        <h2>Technical Projects</h2>
+        <h2>Projects</h2>
         <div class="projects-grid">
 
             <div class="project-card expandable">
@@ -942,8 +923,6 @@
             <div class="action-links">
                 <a href="Work-in-Progress__PiazzaPlus_-_Enhancing_Piazza_Search_with_Semantic_Matching.pdf"
                     target="_blank" class="btn">View Paper PDF</a>
-                <a href="https://www.asee.org/events/Conferences-and-Meetings/2026-Annual-Conference-Exposition"
-                    target="_blank" class="btn btn-outline">Link coming soon</a>
             </div>
         </div>
     </section>
@@ -952,34 +931,31 @@
         <h2>Honours & Awards</h2>
         <div class="awards-grid">
             <div class="award-card">
-                <h3>Edgar McAllister Fellowship</h3>
+                <h3>J. Edgar McAllister Foundation Undergraduate Summer Research Fellowship (2025)</h3>
                 <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">
-                    Awarded to 1 of 2 applicants from all 1st to 3rd year ECE applicants at the University of Toronto to
-                    fund summer research.
+                    University of Toronto
                 </p>
             </div>
             <div class="award-card">
-                <h3>Dean's Honours List</h3>
+                <h3>Dean's Honours List (2023, 2024, 2025, 2026)</h3>
                 <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">
-                    Awarded for academic standing (2023, 2024, 2025, 2026).
+                    University of Toronto.
                 </p>
             </div>
             <div class="award-card">
-                <h3>Faculty of Applied Science and Engineering Scholarship</h3>
+                <h3>Faculty of Applied Science and Engineering Scholarship (2023)</h3>
                 <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">
-                    Granted to an incoming engineering student in recognition of their achievement in secondary school.
+                    University of Toronto
                 </p>
             </div>
             <div class="award-card">
-                <h3>Lions Club Scholarship</h3>
+                <h3>Lions Club Scholarship (2023)</h3>
                 <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">
-                    Awarded to the top scholar of the graduated class who is recognized for their outstanding academic
-                    achievement and contribution to the school/community (high school).
+                    Streetsville Secondary School
                 </p>
             </div>
         </div>
     </section>
-
 
 
     <section id="contact">
@@ -1093,7 +1069,8 @@
             const imageCloseBtn = document.getElementById('imageCloseBtn');
 
             document.addEventListener('click', function (e) {
-                if (e.target.tagName.toLowerCase() === 'img' && (e.target.closest('#modalBody') || e.target.closest('.about-gallery'))) {
+                // EXPLICIT LOGIC: Only trigger the full-screen image if the clicked image is INSIDE the project modal
+                if (e.target.tagName.toLowerCase() === 'img' && e.target.closest('#modalBody')) {
                     e.stopPropagation();
 
                     expandedImage.src = e.target.src;

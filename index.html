@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light">
 
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- GOOGLE ANALYTICS TAG -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZZQLE537X"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -13,11 +13,11 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibraheem El Sheikha | Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-
+    <title>Ibraheem El Sheikha</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' x='50' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='90' fill='black'>i</text></svg>">
+    <!-- CSS STYLESHEET -->
     <style>
-        /* Minimalist Light/Dark Mode Variables */
         :root {
             --bg-color: #fafafa;
             --text-primary: #1a1a1a;
@@ -40,14 +40,12 @@
             --nav-bg: rgba(17, 17, 17, 0.85);
         }
 
-        /* Base Typography & Layout */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Enables smooth scrolling */
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 100px;
@@ -69,7 +67,6 @@
             padding: 2rem 1.5rem 6rem 1.5rem;
         }
 
-        /* Sticky Navigation Bar */
         nav {
             position: fixed;
             top: 0;
@@ -90,11 +87,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
         }
 
         .nav-links {
             display: flex;
             gap: 1.5rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .nav-links::-webkit-scrollbar {
+            display: none;
         }
 
         .nav-links a {
@@ -110,7 +117,6 @@
             opacity: 0.5;
         }
 
-        /* Icon Button */
         #theme-toggle {
             background: transparent;
             border: none;
@@ -122,6 +128,7 @@
             padding: 0.4rem;
             border-radius: 6px;
             transition: all 0.2s ease;
+            flex-shrink: 0;
         }
 
         #theme-toggle:hover {
@@ -145,7 +152,6 @@
             display: none;
         }
 
-        /* Headings */
         h1 {
             font-size: 2.5rem;
             font-weight: 700;
@@ -183,6 +189,7 @@
 
         p {
             margin-bottom: 1rem;
+            word-wrap: break-word;
         }
 
         .subtitle {
@@ -191,7 +198,6 @@
             font-size: 1.05rem;
         }
 
-        /* General Links */
         a {
             color: var(--link-color);
             text-decoration: none;
@@ -208,9 +214,9 @@
             gap: 1.25rem;
             margin-bottom: 3rem;
             font-size: 0.95rem;
+            flex-wrap: wrap;
         }
 
-        /* Lists & Items */
         ul {
             padding-left: 1.25rem;
             margin-bottom: 0;
@@ -226,7 +232,6 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Dual Column List */
         .two-column-list {
             columns: 2;
             -webkit-columns: 2;
@@ -247,6 +252,16 @@
                 columns: 1;
                 -webkit-columns: 1;
                 -moz-columns: 1;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.15rem;
             }
         }
 
@@ -272,6 +287,7 @@
 
 <body>
 
+    <!-- NAVIGATION SECTION -->
     <nav>
         <div class="nav-container">
             <div class="nav-links">
@@ -304,7 +320,10 @@
         </div>
     </nav>
 
+    <!-- MAIN CONTENT -->
     <div class="container">
+
+        <!-- ABOUT SECTION -->
         <header id="about">
             <h1>Ibraheem El Sheikha</h1>
             <p class="subtitle">Computer Engineering (BASc) @ University of Toronto | FPGA SWE @ Microchip Technology
@@ -318,11 +337,13 @@
             </div>
 
             <p>Third-year computer engineering student passionate about computer architecture, embedded systems, FPGAs,
-                and AI applications. My work has involved RTL programming, FPGA flows, microcontroller programming, applied
+                and AI applications. My work has involved RTL programming, FPGA flows, microcontroller programming,
+                applied
                 LLM systems, applied research, and engineering education.</p>
         </header>
 
         <main>
+            <!-- EDUCATION SECTION -->
             <section id="education">
                 <h2>Education</h2>
                 <div class="item">
@@ -349,7 +370,8 @@
                             <ul>
                                 <li>Top 30 ECE Student (out of ~450 students, 2025–2026)</li>
                                 <li>Dean's Honours List (2023, 2024, 2025, 2026)</li>
-                                <li>J. Edgar McAllister Foundation Undergraduate Summer Research Fellowship (one of two selected across all first, second, and third-year ECE applicants, 2025)</li>
+                                <li>J. Edgar McAllister Foundation Undergraduate Summer Research Fellowship (one of two
+                                    selected across all first, second, and third-year ECE applicants, 2025)</li>
                                 <li>Faculty of Applied Science and Engineering Scholarship (2023)</li>
                             </ul>
                         </li>
@@ -357,6 +379,7 @@
                 </div>
             </section>
 
+            <!-- EXPERIENCE SECTION -->
             <section id="experience">
                 <h2>Experience</h2>
 
@@ -373,12 +396,14 @@
                     <h3><span>University of Toronto ECE</span> <span class="date">May 2025 - June 2026</span></h3>
                     <p class="item-context">Software Research Intern</p>
                     <ul>
-                        <li>Developed PiazzaPlus, a Chrome extension for Piazza with a Flask backend that enhanced Piazza by enabling students to discover relevant discussions faster through hybrid semantic + keyword search.</li>
+                        <li>Developed PiazzaPlus, a Chrome extension for Piazza with a Flask backend that enhanced
+                            Piazza by enabling students to discover relevant discussions faster through hybrid semantic
+                            + keyword search.</li>
                         <li>Improved search quality by 120% in MAP and 152% in MRR over Piazza's native search.</li>
                         <li>Supervised by Professor Salma Emara.</li>
-                        <li>Co-authored a peer-reviewed research paper and presented findings at the ASEE Annual Conference in Charlotte, NC. (<a
-                                href="https://peer.asee.org/61076"
-                                target="_blank">View Paper</a>)</li>
+                        <li>Co-authored a peer-reviewed research paper and presented findings at the ASEE Annual
+                            Conference in Charlotte, NC. (<a href="https://peer.asee.org/61076" target="_blank">View
+                                Paper</a>)</li>
                     </ul>
                 </div>
 
@@ -386,24 +411,28 @@
                     <h3><span>Jitterware Inc.</span> <span class="date">Feb. 2025 - Mar. 2025</span></h3>
                     <p class="item-context">PCB Engineering Intern</p>
                     <ul>
-                        <li>Designed and developed a multilayer distortion pedal PCB prototype in KiCAD for an electric guitar, complete with a power supply, gain knob, volume control, and tone control.</li>
+                        <li>Designed and developed a multilayer distortion pedal PCB prototype in KiCAD for an electric
+                            guitar, complete with a power supply, gain knob, volume control, and tone control.</li>
                         <li>Selected components in a BOM and optimized routing for a PCBA cost of under $20 CAD.</li>
                     </ul>
                 </div>
             </section>
 
+            <!-- PROJECTS SECTION -->
             <section id="projects">
                 <h2>Projects</h2>
 
                 <div class="item">
-                    <h3><span><a href="https://chromewebstore.google.com/detail/piazzaplus/negphehjimfmgjijfmmocokgfhglclim" target="_blank">PiazzaPlus</a></span></h3>
+                    <h3><span><a href="https://chromewebstore.google.com/detail/piazzaplus/negphehjimfmgjijfmmocokgfhglclim"
+                                target="_blank">PiazzaPlus</a></span></h3>
                     <div class="tech-tags">Python • Vector Embeddings • LMMs</div>
                     <ul>
                         <li>A Chrome extension enhancing Piazza search via hybrid semantic and keyword search.</li>
                         <li>Designed a custom Flask backend to handle heavy semantic query processing.</li>
                         <li>Designed a lightweight frontend to improve student workflow.</li>
                         <li>Significantly outperformed native search metrics (120% improvement in MAP).</li>
-                        <li><a href="https://github.com/ibraheemelsheikha/piazzaplus" target="_blank">GitHub Repo</a></li>
+                        <li><a href="https://github.com/ibraheemelsheikha/piazzaplus" target="_blank">GitHub Repo</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -412,9 +441,11 @@
                                 Perimeter Defense System</a></span></h3>
                     <div class="tech-tags">STM32 • Embedded C • Bus Protocols • Python</div>
                     <ul>
-                        <li>Integrated STM32 and ESP32 microcontrollers with ultrasonic and IR sensors to create a responsive defense mapping system.</li>
+                        <li>Integrated STM32 and ESP32 microcontrollers with ultrasonic and IR sensors to create a
+                            responsive defense mapping system.</li>
                         <li>Engineered the hardware logic to continuously scan, map, and output tracking data.</li>
-                        <li>Implemented a Python-based real-time perimeter mapping visualizer using Matplotlib to process and render live UART data streams.</li>
+                        <li>Implemented a Python-based real-time perimeter mapping visualizer using Matplotlib to
+                            process and render live UART data streams.</li>
                     </ul>
                 </div>
 
@@ -423,9 +454,12 @@
                                 C Reversi</a></span></h3>
                     <div class="tech-tags">Embedded C • RISC-V Assembly • FPGA</div>
                     <ul>
-                        <li>Developed real-time multiplayer Reversi in embedded C on a RISC-V processor, interfacing a PS/2 mouse and VGA display through memory-mapped ports.</li>
-                        <li>Implemented and optimized a 60 FPS VGA graphics pipeline via direct memory-mapped framebuffer and register access, rendering dynamic game elements.</li>
-                        <li>Developed comprehensive firmware game logic including move validation, score tracking, and win-condition detection.</li>
+                        <li>Developed real-time multiplayer Reversi in embedded C on a RISC-V processor, interfacing a
+                            PS/2 mouse and VGA display through memory-mapped ports.</li>
+                        <li>Implemented and optimized a 60 FPS VGA graphics pipeline via direct memory-mapped
+                            framebuffer and register access, rendering dynamic game elements.</li>
+                        <li>Developed comprehensive firmware game logic including move validation, score tracking, and
+                            win-condition detection.</li>
                     </ul>
                 </div>
 
@@ -433,10 +467,14 @@
                     <h3><span>Software-Defined Radio Receiver</span></h3>
                     <div class="tech-tags">Altium • LTSpice • PyVISA</div>
                     <ul>
-                        <li>Using agile development, led a team of three to design and manufacture a RX receiver for a flexible radio transceiver.</li>
-                        <li>Designed a 8-16 MHz bandpass filter, a +/- 0.7 V limiter circuit, a diode ring quadrature mixer, a 96 kHz cutoff lowpass filter, and a 32 db gain amplifier.</li>
-                        <li>Simulated all subcomponents in LTSpice ensuring they meet interface control document requirements.</li>
-                        <li>Created and manufactured a multilayer PCB in Altium and routed traces to minimize heat loss, tested using oscilloscope, waveform generator, power supply, DMM, and PyVISA.</li>
+                        <li>Using agile development, led a team of three to design and manufacture a RX receiver for a
+                            flexible radio transceiver.</li>
+                        <li>Designed a 8-16 MHz bandpass filter, a +/- 0.7 V limiter circuit, a diode ring quadrature
+                            mixer, a 96 kHz cutoff lowpass filter, and a 32 db gain amplifier.</li>
+                        <li>Simulated all subcomponents in LTSpice ensuring they meet interface control document
+                            requirements.</li>
+                        <li>Created and manufactured a multilayer PCB in Altium and routed traces to minimize heat loss,
+                            tested using oscilloscope, waveform generator, power supply, DMM, and PyVISA.</li>
                     </ul>
                 </div>
 
@@ -444,55 +482,62 @@
                     <h3><span>Custom RISC-V CPU</span></h3>
                     <div class="tech-tags">Verilog • ModelSim • Quartus</div>
                     <ul>
-                        <li>Collaborated with a teammate to implement and debug a RISC-V-inspired CPU from scratch using Verilog and Quartus Prime Lite, debugged in ModelSim.</li>
-                        <li>Designed and implemented a robust VGA display interface, including memory arbitration logic and direct framebuffer management.</li>
-                        <li>Developed the Arithmetic Logic Unit (ALU) to handle core instructions (addi, add, sub, xor, and, or, sw, lw, beq, bne).</li>
+                        <li>Collaborated with a teammate to implement and debug a RISC-V-inspired CPU from scratch using
+                            Verilog and Quartus Prime Lite, debugged in ModelSim.</li>
+                        <li>Designed and implemented a robust VGA display interface, including memory arbitration logic
+                            and direct framebuffer management.</li>
+                        <li>Developed the Arithmetic Logic Unit (ALU) to handle core instructions (addi, add, sub, xor,
+                            and, or, sw, lw, beq, bne).</li>
                     </ul>
                 </div>
             </section>
 
+            <!-- PUBLICATIONS SECTION -->
             <section id="publications">
                 <h2>Publications</h2>
                 <div class="item">
                     <h3><span>Peer-Reviewed Conference Paper</span> <span class="date">June 2026</span></h3>
                     <p class="item-context">First Author • ASEE Annual Conference & Exposition</p>
                     <ul>
-                        <li>First author of and presented a research paper based on the development and integration of the PiazzaPlus semantic search system.</li>
+                        <li>First author of and presented a research paper based on the development and integration of
+                            the PiazzaPlus semantic search system.</li>
                         <li>Supervised by and co-authored with Professor Salma Emara.</li>
-                        <li>Presented work on deploying and evaluating hybrid semantic search for engineering education at the ASEE Annual Conference in Charlotte, North Carolina.</li>
-                        <li><a href="https://peer.asee.org/61076" target="_blank">View Paper PDF</a></li>
+                        <li>Presented work on deploying and evaluating hybrid semantic search for engineering education
+                            at the ASEE Annual Conference in Charlotte, North Carolina.</li>
+                        <li><a href="https://peer.asee.org/61076" target="_blank">View Paper</a></li>
                     </ul>
                 </div>
             </section>
 
+            <!-- CONTACT SECTION -->
             <section id="contact">
                 <h2>Contact</h2>
                 <div class="item">
                     <p>I am always open to discussing new professional or academic engineering opportunities.</p>
                     <p style="margin-top: 0.5rem;"><strong>Email:</strong> <a
                             href="mailto:ibraheem.elsheikha@mail.utoronto.ca">ibraheem.elsheikha@mail.utoronto.ca</a>
+                    <p style="margin-top: 0.5rem;"><strong>LinkedIn:</strong> <a
+                            href="https://www.linkedin.com/in/ibraheem-elsheikha/">Ibraheem El Sheikha</a>
                     </p>
                 </div>
             </section>
         </main>
     </div>
 
+    <!-- SCRIPT SECTION -->
     <script>
         const toggleBtn = document.getElementById('theme-toggle');
         const root = document.documentElement;
 
-        // Check local storage for saved theme, or fallback to system preference
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        // Set initial theme on load
         if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
             root.setAttribute('data-theme', 'dark');
         } else {
             root.setAttribute('data-theme', 'light');
         }
 
-        // Toggle functionality
         toggleBtn.addEventListener('click', () => {
             const currentTheme = root.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';

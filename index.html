@@ -13,9 +13,9 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibraheem El Sheikha</title>
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' x='50' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='90' fill='black'>i</text></svg>">
+    <title>Ibraheem El Sheikha | Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' x='50' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='90' fill='black'>i</text></svg>">
+
     <!-- CSS STYLESHEET -->
     <style>
         :root {
@@ -64,7 +64,7 @@
         .container {
             max-width: 750px;
             margin: 0 auto;
-            padding: 2rem 1.5rem 6rem 1.5rem;
+            padding: 2rem 1.5rem 2rem 1.5rem;
         }
 
         nav {
@@ -247,24 +247,6 @@
             margin-bottom: 0.4rem;
         }
 
-        @media (max-width: 600px) {
-            .two-column-list {
-                columns: 1;
-                -webkit-columns: 1;
-                -moz-columns: 1;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            h3 {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.15rem;
-            }
-        }
-
         .item {
             margin-bottom: 2.5rem;
         }
@@ -281,6 +263,43 @@
             font-weight: 500;
             color: var(--text-secondary);
             margin-bottom: 0.75rem;
+        }
+
+        /* NEW FOOTER STYLES */
+        footer {
+            margin-top: 4rem;
+            text-align: center; /* Centered for a cleaner look */
+        }
+
+        .privacy-notice {
+            font-size: 0.65rem; /* Shrunk slightly */
+            color: var(--text-secondary);
+            opacity: 0.4;
+            margin-bottom: 0;
+            white-space: nowrap; /* Forces text to stay on one line */
+        }
+
+        /* MOBILE ADJUSTMENTS */
+        @media (max-width: 600px) {
+            .two-column-list {
+                columns: 1;
+                -webkit-columns: 1;
+                -moz-columns: 1;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.15rem;
+            }
+
+            .privacy-notice {
+                white-space: normal; /* Allows wrapping ONLY on mobile screens */
+            }
         }
     </style>
 </head>
@@ -322,7 +341,7 @@
 
     <!-- MAIN CONTENT -->
     <div class="container">
-
+        
         <!-- ABOUT SECTION -->
         <header id="about">
             <h1>Ibraheem El Sheikha</h1>
@@ -337,8 +356,7 @@
             </div>
 
             <p>Third-year computer engineering student passionate about computer architecture, embedded systems, FPGAs,
-                and AI applications. My work has involved RTL programming, FPGA flows, microcontroller programming,
-                applied
+                and AI applications. My work has involved RTL programming, FPGA flows, microcontroller programming, applied
                 LLM systems, applied research, and engineering education.</p>
         </header>
 
@@ -348,8 +366,10 @@
                 <h2>Education</h2>
                 <div class="item">
                     <h3><span>University of Toronto</span> <span class="date">Sept. 2023 - Present</span></h3>
-                    <p class="item-context">Bachelor of Applied Science (BASc) in Computer Engineering + PEY Co-op</p>
+                    <p class="item-context">Bachelor of Applied Science (BASc) in Computer Engineering</p>
                     <ul>
+                        <li><strong>Thesis:</strong> PiazzaPlus - Enhancing Piazza Search with Semantic Matching
+                            (Supervised by Professor Salma Emara).</li>
                         <li><strong>Technical Coursework:</strong>
                             <ul class="two-column-list">
                                 <li>Computer Organization (RISC-V)</li>
@@ -364,17 +384,12 @@
                                 <li>Computer Networks</li>
                             </ul>
                         </li>
-                        <li><strong>Research Course:</strong> PiazzaPlus - Enhancing Piazza Search with Semantic
-                            Matching
-                            (Supervised by Professor Salma Emara).</li>
                         <li><strong>Honours & Awards:</strong>
                             <ul>
-                                <li><strong>Top 30 ECE Student</strong> (out of ~450 students, 2025–2026)</li>
-                                <li><strong>Dean's Honours List</strong> (2023, 2024, 2025, 2026)</li>
-                                <li><strong>J. Edgar McAllister Foundation Undergraduate Summer Research
-                                        Award</strong> (one of two students
-                                    selected across all first, second, and third-year ECE applicants, 2025)</li>
-                                <li><strong>Faculty of Applied Science and Engineering Scholarship</strong> (2023)</li>
+                                <li>Top 30 ECE Student (out of ~450 students, 2025–2026)</li>
+                                <li>Dean's Honours List (2023, 2024, 2025, 2026)</li>
+                                <li>J. Edgar McAllister Foundation Undergraduate Summer Research Fellowship (one of two selected across all first, second, and third-year ECE applicants, 2025)</li>
+                                <li>Faculty of Applied Science and Engineering Scholarship (2023)</li>
                             </ul>
                         </li>
                     </ul>
@@ -396,26 +411,23 @@
 
                 <div class="item">
                     <h3><span>University of Toronto ECE</span> <span class="date">May 2025 - June 2026</span></h3>
-                    <p class="item-context">Software Research Intern | Toronto, ON</p>
+                    <p class="item-context">Software Research Intern</p>
                     <ul>
-                        <li>Developed PiazzaPlus, a Chrome extension for Piazza with a Flask backend that enhanced
-                            Piazza by enabling students to discover relevant discussions faster through hybrid semantic
-                            + keyword search.</li>
+                        <li>Developed PiazzaPlus, a Chrome extension for Piazza with a Flask backend that enhanced Piazza by enabling students to discover relevant discussions faster through hybrid semantic + keyword search.</li>
                         <li>Improved search quality by 120% in MAP and 152% in MRR over Piazza's native search.</li>
                         <li>Supervised by Professor Salma Emara.</li>
-                        <li>Co-authored a peer-reviewed research paper and presented findings at the ASEE Annual
-                            Conference in Charlotte, NC. (<a href="https://peer.asee.org/61076" target="_blank">View
-                                Paper</a>)</li>
+                        <li>Co-authored a peer-reviewed research paper and presented findings at the ASEE Annual Conference in Charlotte, NC. (<a
+                                href="https://peer.asee.org/61076"
+                                target="_blank">View Paper</a>)</li>
                     </ul>
                 </div>
 
                 <div class="item">
                     <h3><span>Jitterware Inc.</span> <span class="date">Feb. 2025 - Mar. 2025</span></h3>
-                    <p class="item-context">PCB Engineering Intern | Remote</p>
+                    <p class="item-context">PCB Engineering Intern</p>
                     <ul>
-                        <li>Designed and developed a multilayer distortion pedal PCB prototype in KiCAD for an electric
-                            guitar, complete with a power supply, gain knob, volume control, and tone control.</li>
-                        <li>Selected components in a BOM and optimized routing for a PCBA cost of under $10 CAD.</li>
+                        <li>Designed and developed a multilayer distortion pedal PCB prototype in KiCAD for an electric guitar, complete with a power supply, gain knob, volume control, and tone control.</li>
+                        <li>Selected components in a BOM and optimized routing for a PCBA cost of under $20 CAD.</li>
                     </ul>
                 </div>
             </section>
@@ -425,16 +437,14 @@
                 <h2>Projects</h2>
 
                 <div class="item">
-                    <h3><span><a href="https://chromewebstore.google.com/detail/piazzaplus/negphehjimfmgjijfmmocokgfhglclim"
-                                target="_blank">PiazzaPlus</a></span></h3>
-                    <div class="tech-tags">Python • Vector Embeddings • LMMs • Applied Research</div>
+                    <h3><span><a href="https://chromewebstore.google.com/detail/piazzaplus/negphehjimfmgjijfmmocokgfhglclim" target="_blank">PiazzaPlus</a></span></h3>
+                    <div class="tech-tags">Python • Vector Embeddings • LMMs</div>
                     <ul>
                         <li>A Chrome extension enhancing Piazza search via hybrid semantic and keyword search.</li>
                         <li>Designed a custom Flask backend to handle heavy semantic query processing.</li>
                         <li>Designed a lightweight frontend to improve student workflow.</li>
                         <li>Significantly outperformed native search metrics (120% improvement in MAP).</li>
-                        <li><a href="https://github.com/ibraheemelsheikha/piazzaplus" target="_blank">GitHub Repo</a>
-                        </li>
+                        <li><a href="https://github.com/ibraheemelsheikha/piazzaplus" target="_blank">GitHub Repo</a></li>
                     </ul>
                 </div>
 
@@ -443,11 +453,9 @@
                                 Perimeter Defense System</a></span></h3>
                     <div class="tech-tags">STM32 • Embedded C • Bus Protocols • Python</div>
                     <ul>
-                        <li>Integrated STM32 and ESP32 microcontrollers with ultrasonic and IR sensors to create a
-                            responsive defense mapping system.</li>
+                        <li>Integrated STM32 and ESP32 microcontrollers with ultrasonic and IR sensors to create a responsive defense mapping system.</li>
                         <li>Engineered the hardware logic to continuously scan, map, and output tracking data.</li>
-                        <li>Implemented a Python-based real-time perimeter mapping visualizer using Matplotlib to
-                            process and render live UART data streams.</li>
+                        <li>Implemented a Python-based real-time perimeter mapping visualizer using Matplotlib to process and render live UART data streams.</li>
                     </ul>
                 </div>
 
@@ -456,12 +464,9 @@
                                 C Reversi</a></span></h3>
                     <div class="tech-tags">Embedded C • RISC-V Assembly • FPGA</div>
                     <ul>
-                        <li>Developed real-time multiplayer Reversi in embedded C on a RISC-V processor, interfacing a
-                            PS/2 mouse and VGA display through memory-mapped ports.</li>
-                        <li>Implemented and optimized a 60 FPS VGA graphics pipeline via direct memory-mapped
-                            framebuffer and register access, rendering dynamic game elements.</li>
-                        <li>Developed comprehensive firmware game logic including move validation, score tracking, and
-                            win-condition detection.</li>
+                        <li>Developed real-time multiplayer Reversi in embedded C on a RISC-V processor, interfacing a PS/2 mouse and VGA display through memory-mapped ports.</li>
+                        <li>Implemented and optimized a 60 FPS VGA graphics pipeline via direct memory-mapped framebuffer and register access, rendering dynamic game elements.</li>
+                        <li>Developed comprehensive firmware game logic including move validation, score tracking, and win-condition detection.</li>
                     </ul>
                 </div>
 
@@ -469,27 +474,20 @@
                     <h3><span>Software-Defined Radio Receiver</span></h3>
                     <div class="tech-tags">Altium • LTSpice • PyVISA</div>
                     <ul>
-                        <li>Using agile development, led a team of three to design and manufacture a RX receiver for a
-                            flexible radio transceiver.</li>
-                        <li>Designed a 8-16 MHz bandpass filter, a +/- 0.7 V limiter circuit, a diode ring quadrature
-                            mixer, a 96 kHz cutoff lowpass filter, and a 32 db gain amplifier.</li>
-                        <li>Simulated all subcomponents in LTSpice ensuring they meet interface control document
-                            requirements.</li>
-                        <li>Created and manufactured a multilayer PCB in Altium and routed traces to minimize heat loss,
-                            tested using oscilloscope, waveform generator, power supply, DMM, and PyVISA.</li>
+                        <li>Using agile development, led a team of three to design and manufacture a RX receiver for a flexible radio transceiver.</li>
+                        <li>Designed a 8-16 MHz bandpass filter, a +/- 0.7 V limiter circuit, a diode ring quadrature mixer, a 96 kHz cutoff lowpass filter, and a 32 db gain amplifier.</li>
+                        <li>Simulated all subcomponents in LTSpice ensuring they meet interface control document requirements.</li>
+                        <li>Created and manufactured a multilayer PCB in Altium and routed traces to minimize heat loss, tested using oscilloscope, waveform generator, power supply, DMM, and PyVISA.</li>
                     </ul>
                 </div>
 
                 <div class="item">
                     <h3><span>Custom RISC-V CPU</span></h3>
-                    <div class="tech-tags">Verilog • ModelSim • Quartus • FPGA</div>
+                    <div class="tech-tags">Verilog • ModelSim • Quartus</div>
                     <ul>
-                        <li>Implemented a RISC-V-inspired CPU from scratch using
-                            Verilog and Quartus Prime Lite, debugged in ModelSim.</li>
-                        <li>Designed and implemented a robust VGA display interface, including memory arbitration logic
-                            and direct framebuffer management.</li>
-                        <li>Handles core instructions (addi, add, sub, xor,
-                            and, or, sw, lw, beq, bne).</li>
+                        <li>Collaborated with a teammate to implement and debug a RISC-V-inspired CPU from scratch using Verilog and Quartus Prime Lite, debugged in ModelSim.</li>
+                        <li>Designed and implemented a robust VGA display interface, including memory arbitration logic and direct framebuffer management.</li>
+                        <li>Developed the Arithmetic Logic Unit (ALU) to handle core instructions (addi, add, sub, xor, and, or, sw, lw, beq, bne).</li>
                     </ul>
                 </div>
             </section>
@@ -501,13 +499,10 @@
                     <h3><span>Peer-Reviewed Conference Paper</span> <span class="date">June 2026</span></h3>
                     <p class="item-context">First Author • ASEE Annual Conference & Exposition</p>
                     <ul>
-                        <li>First author of and presented a peer-reviewed research paper based on the development and
-                            integration of
-                            the PiazzaPlus semantic search system.</li>
+                        <li>First author of and presented a research paper based on the development and integration of the PiazzaPlus semantic search system.</li>
                         <li>Supervised by and co-authored with Professor Salma Emara.</li>
-                        <li>Presented work on deploying and evaluating hybrid semantic search for engineering education
-                            at the ASEE Annual Conference in Charlotte, North Carolina.</li>
-                        <li><a href="https://peer.asee.org/61076" target="_blank">View Paper</a></li>
+                        <li>Presented work on deploying and evaluating hybrid semantic search for engineering education at the ASEE Annual Conference in Charlotte, North Carolina.</li>
+                        <li><a href="https://peer.asee.org/61076" target="_blank">View Paper PDF</a></li>
                     </ul>
                 </div>
             </section>
@@ -518,17 +513,23 @@
                 <div class="item">
                     <p>I am always open to discussing new professional or academic engineering opportunities.</p>
                     <p style="margin-top: 0.5rem;"><strong>Email:</strong> <a
-                            href="mailto:ibraheem.elsheikha@mail.utoronto.ca">ibraheem.elsheikha@mail.utoronto.ca</a>
-                    <p style="margin-top: 0.5rem;"><strong>LinkedIn:</strong> <a
-                            href="https://www.linkedin.com/in/ibraheem-elsheikha/">Ibraheem El Sheikha</a>
+                            href="mailto:ibraheem.elsheikha@mail.utoronto.ca">ibraheem.elsheikha@mail.utoronto.ca</a></p>
+                    <p style="margin-top: 0.5rem;"><strong>LinkedIn:</strong> <a 
+                            href="https://www.linkedin.com/in/ibraheem-elsheikha" target="_blank">Ibraheem El Sheikha</a>
                     </p>
                 </div>
             </section>
         </main>
+        
+        <!-- FOOTER SECTION -->
+        <footer>
+            <p class="privacy-notice">&copy; 2026 Ibraheem El Sheikha. This website uses Google Analytics and an open-source script to collect generalized, anonymous visitor region data.</p>
+        </footer>
     </div>
 
     <!-- SCRIPT SECTION -->
     <script>
+        // --- THEME TOGGLE SCRIPT ---
         const toggleBtn = document.getElementById('theme-toggle');
         const root = document.documentElement;
 
@@ -548,38 +549,35 @@
             root.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
         });
+
+        // --- VISITOR TRACKING SCRIPT ---
+        window.addEventListener('load', async () => {
+            if (window.location.search.includes('admin=true')) {
+                localStorage.setItem('ignore_visits', 'true');
+            }
+            if (localStorage.getItem('ignore_visits') === 'true') {
+                return; 
+            }
+
+            const ntfyUrl = 'https://ntfy.sh/ibraheem-portfolio-visits-99x7';
+            
+            try {
+                const geoResponse = await fetch('https://get.geojs.io/v1/ip/geo.json');
+                const geoData = await geoResponse.json();
+                
+                const city = geoData.city || 'Unknown City';
+                const country = geoData.country || 'Unknown Country';
+                const isp = geoData.organization_name || 'Unknown ISP';
+                
+                await fetch(ntfyUrl, {
+                    method: 'POST',
+                    body: `New visitor from ${city}, ${country}!\nISP: ${isp}`
+                });
+            } catch (err) {
+                console.error('Silent ping failed');
+            }
+        });
     </script>
 </body>
-
-<script>
-    window.addEventListener('load', async () => {
-        if (window.location.search.includes('admin=true')) {
-            localStorage.setItem('ignore_visits', 'true');
-        }
-        if (localStorage.getItem('ignore_visits') === 'true') {
-            return; 
-        }
-
-        const ntfyUrl = 'https://ntfy.sh/ibraheem-portfolio-visits-99x7';
-        
-        try {
-            // 2. Fetch from GeoJS
-            const geoResponse = await fetch('https://get.geojs.io/v1/ip/geo.json');
-            const geoData = await geoResponse.json();
-            
-            const city = geoData.city || 'Unknown City';
-            const country = geoData.country || 'Unknown Country';
-            const isp = geoData.organization_name || 'Unknown ISP';
-            
-            // 3. Send the push notification
-            await fetch(ntfyUrl, {
-                method: 'POST',
-                body: `New visitor from ${city}, ${country}!\nISP: ${isp}`
-            });
-        } catch (err) {
-            console.error('Silent ping failed');
-        }
-    });
-</script>
 
 </html>

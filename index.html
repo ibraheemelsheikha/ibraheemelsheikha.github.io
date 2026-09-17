@@ -556,7 +556,7 @@
         </footer>
     </div>
 
-    <!-- SCRIPT SECTION -->
+        <!-- SCRIPT SECTION -->
     <script>
         // --- THEME TOGGLE SCRIPT ---
         const toggleBtn = document.getElementById('theme-toggle');
@@ -585,35 +585,42 @@
                 localStorage.setItem('ignore_visits', 'true');
             }
             if (localStorage.getItem('ignore_visits') === 'true') {
-                return;
+                return; 
             }
 
             const ntfyUrl = 'https://ntfy.sh/ibraheem-portfolio-visits-99x7';
-
+            
             try {
                 // 1. Identify the traffic source
                 const rawReferrer = document.referrer;
                 const source = rawReferrer ? new URL(rawReferrer).hostname : 'Direct Entry / Typed URL';
 
-                // 2. Fetch location and ISP data
+                // 2. Identify OS
+                const ua = navigator.userAgent;
+                let os = "Unknown OS";
+                if (/Windows/i.test(ua)) os = "Windows";
+                else if (/Android/i.test(ua)) os = "Android";
+                else if (/iPhone|iPad|iPod/i.test(ua)) os = "iOS";
+                else if (/Mac/i.test(ua)) os = "macOS";
+                else if (/Linux/i.test(ua)) os = "Linux";
+
+                // 3. Fetch location
                 const geoResponse = await fetch('https://get.geojs.io/v1/ip/geo.json');
                 const geoData = await geoResponse.json();
-
+                
                 const city = geoData.city || 'Unknown City';
                 const country = geoData.country || 'Unknown Country';
                 const isp = geoData.organization_name || 'Unknown ISP';
-
-                // 3. Send push notification
+                
+                // 4. Send push notification
                 await fetch(ntfyUrl, {
                     method: 'POST',
-                    body: `New visitor from ${city}, ${country}!\nSource: ${source}\nISP: ${isp}`
+                    body: `New visitor from ${city}, ${country}!\nOS: ${os}\nSource: ${source}\nISP: ${isp}`
                 });
             } catch (err) {
                 console.error('Silent ping failed');
             }
         });
     </script>
-
-</body>
 
 </html>

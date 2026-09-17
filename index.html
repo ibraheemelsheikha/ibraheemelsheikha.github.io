@@ -13,7 +13,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibraheem El Sheikha | Portfolio</title>
+    <title>Ibraheem El Sheikha</title>
     <meta name="description"
         content="Computer engineering student at the University of Toronto and FPGA software engineering intern at Microchip Technology. Work in computer architecture, embedded systems, FPGAs, and applied AI.">
     <meta name="author" content="Ibraheem El Sheikha">
@@ -85,7 +85,6 @@
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 80px;
-            /* Stops iOS Safari inflating text when rotated to landscape */
             -webkit-text-size-adjust: 100%;
             text-size-adjust: 100%;
         }
@@ -114,7 +113,6 @@
             font-size: 16px;
             -webkit-font-smoothing: antialiased;
             transition: background-color 0.3s ease, color 0.3s ease;
-            /* Reserves the fixed nav's height so content can never slide under it */
             padding-top: calc(58px + env(safe-area-inset-top, 0px));
         }
 
@@ -122,7 +120,6 @@
             max-width: 680px;
             margin: 0 auto;
             padding: 1rem 1.5rem 2rem;
-            /* Clears the notch when a phone is held in landscape */
             padding-left: max(1.5rem, env(safe-area-inset-left));
             padding-right: max(1.5rem, env(safe-area-inset-right));
         }
@@ -172,7 +169,6 @@
             color: var(--text-secondary);
             text-decoration: none;
             transition: opacity 0.15s ease;
-            /* Grows the tap target without changing the bar's height */
             padding: 0.55rem 0;
         }
 
@@ -267,7 +263,6 @@
 
         .subtitle p {
             margin-bottom: 0;
-            /* Evens out the wrap on narrow screens instead of orphaning a word */
             text-wrap: balance;
         }
 
@@ -351,7 +346,6 @@
             text-wrap: balance;
         }
 
-        /* MOBILE ADJUSTMENTS */
         @media (max-width: 600px) {
             h1 {
                 font-size: 2rem;
@@ -377,7 +371,6 @@
 
             .nav-links {
                 gap: 1.1rem;
-                /* Fades the right edge to signal the bar scrolls */
                 mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent);
                 -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent);
             }
@@ -391,7 +384,6 @@
             }
         }
 
-        /* PHONE IN LANDSCAPE: reclaim vertical space */
         @media (max-height: 500px) and (orientation: landscape) {
             .container {
                 padding-top: 0.5rem;
@@ -721,15 +713,14 @@
         <!-- FOOTER SECTION -->
         <footer>
             <p class="privacy-notice">&copy; 2026 Ibraheem El Sheikha. This site uses Google Analytics and records the
-                approximate location (city and country), referring page, and time of each visit.</p>
+                approximate location (city, region, and country), operating system, referring page, and time of each
+                visit.</p>
 
         </footer>
     </div>
 
     <!-- SCRIPT SECTION -->
     <script>
-        // --- THEME TOGGLE SCRIPT ---
-        // Initial theme is set by the inline script in <head> (before first paint).
         const toggleBtn = document.getElementById('theme-toggle');
         const root = document.documentElement;
 
@@ -741,9 +732,6 @@
             localStorage.setItem('theme', newTheme);
         });
 
-        // --- VISITOR PING ---
-        // Posts the traffic source to a Cloudflare Worker, which resolves the
-        // city at the edge and forwards it to a private Telegram chat.
         window.addEventListener('load', async () => {
             const params = new URLSearchParams(window.location.search);
 
@@ -752,17 +740,12 @@
             }
             if (localStorage.getItem('ignore_visits') === 'true') return;
 
-            // One ping per tab session, so reloads don't re-notify.
             try {
                 if (sessionStorage.getItem('pinged')) return;
                 sessionStorage.setItem('pinged', '1');
-            } catch (err) {
-                // storage blocked (private mode): fall through and ping once
-            }
+            } catch (err) { }
 
             try {
-                // A tagged link beats the referrer, which LinkedIn and most
-                // in-app browsers strip entirely.
                 const tagged = params.get('utm_source') || params.get('ref');
                 const source = tagged
                     ? tagged
@@ -770,15 +753,21 @@
                         ? new URL(document.referrer).hostname
                         : 'Direct / typed URL';
 
+                const ua = navigator.userAgent;
+                let os = 'Unknown OS';
+                if (/Windows/i.test(ua)) os = 'Windows';
+                else if (/Android/i.test(ua)) os = 'Android';
+                else if (/iPhone|iPad|iPod/i.test(ua)) os = 'iOS';
+                else if (/Mac/i.test(ua)) os = 'macOS';
+                else if (/Linux/i.test(ua)) os = 'Linux';
+
                 await fetch('https://visitor-worker.ibraheemelsheikha.workers.dev/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ source }),
+                    body: JSON.stringify({ source, os }),
                     keepalive: true
                 });
-            } catch (err) {
-                // never let tracking break the page
-            }
+            } catch (err) { }
         });
     </script>
 

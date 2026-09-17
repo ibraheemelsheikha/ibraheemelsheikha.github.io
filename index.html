@@ -557,7 +557,7 @@
         
         try {
             // 1. Fetch the visitor's location data
-            const geoResponse = await fetch('https://ipapi.co/json/');
+            const geoResponse = await fetch('https://ipinfo.io/json');
             const geoData = await geoResponse.json();
             
             const city = geoData.city || 'Unknown City';

@@ -561,7 +561,7 @@
             const geoData = await geoResponse.json();
             
             const city = geoData.city || 'Unknown City';
-            const country = geoData.country_name || 'Unknown Country';
+            const country = geoData.country || 'Unknown Country';
             
             // 2. Send the push notification
             await fetch(ntfyUrl, {

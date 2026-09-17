@@ -551,4 +551,27 @@
     </script>
 </body>
 
+<script>
+    window.addEventListener('load', async () => {
+        const ntfyUrl = 'https://ntfy.sh/ibraheem-portfolio-visits-99x7';
+        
+        try {
+            // 1. Fetch the visitor's location data
+            const geoResponse = await fetch('https://ipapi.co/json/');
+            const geoData = await geoResponse.json();
+            
+            const city = geoData.city || 'Unknown City';
+            const country = geoData.country_name || 'Unknown Country';
+            
+            // 2. Send the push notification
+            await fetch(ntfyUrl, {
+                method: 'POST',
+                body: `New visitor from ${city}, ${country}!`
+            });
+        } catch (err) {
+            console.error('Silent ping failed');
+        }
+    });
+</script>
+
 </html>

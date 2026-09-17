@@ -553,20 +553,28 @@
 
 <script>
     window.addEventListener('load', async () => {
+        if (window.location.search.includes('admin=true')) {
+            localStorage.setItem('ignore_visits', 'true');
+        }
+        if (localStorage.getItem('ignore_visits') === 'true') {
+            return; 
+        }
+
         const ntfyUrl = 'https://ntfy.sh/ibraheem-portfolio-visits-99x7';
         
         try {
-            // 1. Fetch the visitor's location data
-            const geoResponse = await fetch('https://ipinfo.io/json');
+            // 2. Fetch from GeoJS
+            const geoResponse = await fetch('https://get.geojs.io/v1/ip/geo.json');
             const geoData = await geoResponse.json();
             
             const city = geoData.city || 'Unknown City';
             const country = geoData.country || 'Unknown Country';
+            const isp = geoData.organization_name || 'Unknown ISP';
             
-            // 2. Send the push notification
+            // 3. Send the push notification
             await fetch(ntfyUrl, {
                 method: 'POST',
-                body: `New visitor from ${city}, ${country}!`
+                body: `New visitor from ${city}, ${country}!\nISP: ${isp}`
             });
         } catch (err) {
             console.error('Silent ping failed');

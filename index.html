@@ -14,29 +14,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ibraheem El Sheikha | Portfolio</title>
+    <meta name="description"
+        content="Computer engineering student at the University of Toronto and FPGA software engineering intern at Microchip Technology. Work in computer architecture, embedded systems, FPGAs, and applied AI.">
+    <meta name="author" content="Ibraheem El Sheikha">
+    <link rel="canonical" href="https://ibraheemelsheikha.github.io/">
+
+    <!-- OPEN GRAPH / LINK PREVIEWS -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://ibraheemelsheikha.github.io/">
+    <meta property="og:title" content="Ibraheem El Sheikha | Portfolio">
+    <meta property="og:description"
+        content="Computer engineering student at the University of Toronto and FPGA software engineering intern at Microchip Technology. Work in computer architecture, embedded systems, FPGAs, and applied AI.">
+    <meta property="og:site_name" content="Ibraheem El Sheikha">
+    <meta property="og:image" content="https://ibraheemelsheikha.github.io/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"
+        content="Ibraheem El Sheikha. Computer Engineering (BASc) @ University of Toronto. FPGA Software Engineering Intern @ Microchip Technology.">
+    <meta property="profile:first_name" content="Ibraheem">
+    <meta property="profile:last_name" content="El Sheikha">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ibraheem El Sheikha | Portfolio">
+    <meta name="twitter:description"
+        content="Computer engineering student at the University of Toronto and FPGA software engineering intern at Microchip Technology. Work in computer architecture, embedded systems, FPGAs, and applied AI.">
+    <meta name="twitter:image" content="https://ibraheemelsheikha.github.io/og-image.png">
+
+    <!-- THEME INIT: must run before first paint to avoid a light-mode flash -->
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            var dark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        })();
+    </script>
+
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' x='50' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='90' fill='black'>i</text></svg>">
 
     <!-- CSS STYLESHEET -->
     <style>
         :root {
+            color-scheme: light;
             --bg-color: #fafafa;
             --text-primary: #1a1a1a;
             --text-secondary: #666666;
             --border-color: #e5e5e5;
             --link-color: #2563eb;
-            --link-hover: #1d4ed8;
             --hover-bg: #f4f4f5;
             --nav-bg: rgba(250, 250, 250, 0.85);
         }
 
         [data-theme="dark"] {
+            color-scheme: dark;
             --bg-color: #111111;
             --text-primary: #ededed;
             --text-secondary: #a1a1aa;
             --border-color: #333333;
             --link-color: #60a5fa;
-            --link-hover: #93c5fd;
             --hover-bg: #1f2937;
             --nav-bg: rgba(17, 17, 17, 0.85);
         }
@@ -49,7 +84,26 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 100px;
+            scroll-padding-top: 80px;
+            /* Stops iOS Safari inflating text when rotated to landscape */
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            * {
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--link-color);
+            outline-offset: 3px;
+            border-radius: 2px;
         }
 
         body {
@@ -60,12 +114,17 @@
             font-size: 16px;
             -webkit-font-smoothing: antialiased;
             transition: background-color 0.3s ease, color 0.3s ease;
+            /* Reserves the fixed nav's height so content can never slide under it */
+            padding-top: calc(58px + env(safe-area-inset-top, 0px));
         }
 
         .container {
-            max-width: 750px;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 2rem 1.5rem 2rem 1.5rem;
+            padding: 1rem 1.5rem 2rem;
+            /* Clears the notch when a phone is held in landscape */
+            padding-left: max(1.5rem, env(safe-area-inset-left));
+            padding-right: max(1.5rem, env(safe-area-inset-right));
         }
 
         nav {
@@ -79,12 +138,15 @@
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             transition: background-color 0.3s ease, border-color 0.3s ease;
+            padding-top: env(safe-area-inset-top);
         }
 
         .nav-container {
-            max-width: 750px;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 1rem 1.5rem;
+            padding: 0.5rem 1.5rem;
+            padding-left: max(1.5rem, env(safe-area-inset-left));
+            padding-right: max(1.5rem, env(safe-area-inset-right));
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -98,7 +160,6 @@
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            -ms-overflow-style: none;
         }
 
         .nav-links::-webkit-scrollbar {
@@ -110,12 +171,15 @@
             font-weight: 500;
             color: var(--text-secondary);
             text-decoration: none;
-            opacity: 1;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.15s ease;
+            /* Grows the tap target without changing the bar's height */
+            padding: 0.55rem 0;
         }
 
         .nav-links a:hover {
             opacity: 0.5;
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
 
         #theme-toggle {
@@ -157,18 +221,18 @@
             font-size: 2.5rem;
             font-weight: 700;
             letter-spacing: -0.03em;
-            margin-top: 3rem;
+            margin-top: 1rem;
             margin-bottom: 0.25rem;
         }
 
         h2 {
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.25rem;
+            font-weight: 700;
             margin-top: 3.5rem;
             margin-bottom: 1.5rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-secondary);
+            letter-spacing: 0.04em;
+            color: var(--text-primary);
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 0.5rem;
         }
@@ -186,6 +250,8 @@
             font-size: 0.9rem;
             font-weight: 400;
             color: var(--text-secondary);
+            flex-shrink: 0;
+            margin-left: 1.5rem;
         }
 
         p {
@@ -199,15 +265,22 @@
             font-size: 1.05rem;
         }
 
+        .subtitle p {
+            margin-bottom: 0;
+            /* Evens out the wrap on narrow screens instead of orphaning a word */
+            text-wrap: balance;
+        }
+
         a {
             color: var(--link-color);
             text-decoration: none;
-            opacity: 1;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.15s ease;
         }
 
         a:hover {
             opacity: 0.5;
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
 
         .contact-links {
@@ -220,7 +293,6 @@
 
         ul {
             padding-left: 1.25rem;
-            margin-bottom: 0;
         }
 
         ul ul {
@@ -231,21 +303,6 @@
 
         li {
             margin-bottom: 0.5rem;
-        }
-
-        .two-column-list {
-            columns: 2;
-            -webkit-columns: 2;
-            -moz-columns: 2;
-            column-gap: 2rem;
-            margin-top: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .two-column-list li {
-            break-inside: avoid-column;
-            page-break-inside: avoid;
-            margin-bottom: 0.4rem;
         }
 
         .item {
@@ -266,33 +323,42 @@
             margin-bottom: 0.75rem;
         }
 
-        /* NEW FOOTER STYLES */
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.9em;
+        }
+
+        .skills-line {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0;
+        }
+
+        .skills-line strong {
+            font-weight: 600;
+        }
+
         footer {
             margin-top: 4rem;
             text-align: center;
-            /* Centered for a cleaner look */
         }
 
         .privacy-notice {
-            font-size: 0.65rem;
-            /* Shrunk slightly */
+            font-size: 0.7rem;
             color: var(--text-secondary);
-            opacity: 0.4;
+            opacity: 0.7;
             margin-bottom: 0;
-            white-space: nowrap;
-            /* Forces text to stay on one line */
+            text-wrap: balance;
         }
 
         /* MOBILE ADJUSTMENTS */
         @media (max-width: 600px) {
-            .two-column-list {
-                columns: 1;
-                -webkit-columns: 1;
-                -moz-columns: 1;
-            }
-
             h1 {
                 font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.1rem;
             }
 
             h3 {
@@ -301,9 +367,52 @@
                 gap: 0.15rem;
             }
 
-            .privacy-notice {
-                white-space: normal;
-                /* Allows wrapping ONLY on mobile screens */
+            .date {
+                margin-left: 0;
+            }
+
+            .subtitle {
+                font-size: 0.95rem;
+            }
+
+            .nav-links {
+                gap: 1.1rem;
+                /* Fades the right edge to signal the bar scrolls */
+                mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent);
+                -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent);
+            }
+
+            .contact-links {
+                gap: 1rem 1.25rem;
+            }
+
+            .contact-links a {
+                padding: 0.25rem 0;
+            }
+        }
+
+        /* PHONE IN LANDSCAPE: reclaim vertical space */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .container {
+                padding-top: 0.5rem;
+            }
+
+            h1 {
+                margin-top: 0.5rem;
+                font-size: 2rem;
+            }
+
+            h2 {
+                margin-top: 2.25rem;
+                margin-bottom: 1rem;
+            }
+
+            .item {
+                margin-bottom: 1.75rem;
+            }
+
+            footer {
+                margin-top: 2.5rem;
             }
         }
     </style>
@@ -320,6 +429,7 @@
                 <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
                 <a href="#publications">Publications</a>
+                <a href="#skills">Skills</a>
                 <a href="#contact">Contact</a>
             </div>
 
@@ -350,8 +460,10 @@
         <!-- ABOUT SECTION -->
         <header id="about">
             <h1>Ibraheem El Sheikha</h1>
-            <p class="subtitle">Computer Engineering (BASc) @ University of Toronto | FPGA SWE @ Microchip Technology
-            </p>
+            <div class="subtitle">
+                <p>Computer Engineering (BASc) @ University of Toronto</p>
+                <p>FPGA Software Engineering Intern @ Microchip Technology</p>
+            </div>
 
             <div class="contact-links">
                 <a href="mailto:ibraheem.elsheikha@mail.utoronto.ca">Email</a>
@@ -360,10 +472,10 @@
                 <a href="ElSheikha_Ibraheem_Resume.pdf" target="_blank">Resume</a>
             </div>
 
-            <p>Third-year computer engineering student passionate about computer architecture, embedded systems, FPGAs,
-                and AI applications. My work has involved RTL programming, FPGA flows, microcontroller programming,
-                applied
-                LLM systems, applied research, and engineering education.</p>
+            <p>Computer engineering student at the University of Toronto, on a 16-month internship at Microchip writing
+                C++ for the synthesis stage of FPGA design tools. Most of what I build sits close to the hardware:
+                processors, embedded firmware, and the tooling in between. I am aiming at computer architecture and
+                low-level systems work.</p>
         </header>
 
         <main>
@@ -376,20 +488,6 @@
                     <ul>
                         <li><strong>Thesis:</strong> PiazzaPlus - Enhancing Piazza Search with Semantic Matching
                             (Supervised by Professor Salma Emara).</li>
-                        <li><strong>Technical Coursework:</strong>
-                            <ul class="two-column-list">
-                                <li>Computer Organization (RISC-V)</li>
-                                <li>Digital Systems (Verilog, FPGA)</li>
-                                <li>Programming Fundamentals (C++)</li>
-                                <li>Computer Fundamentals (C)</li>
-                                <li>Operating Systems (Linux)</li>
-                                <li>Data Structures and Algorithms</li>
-                                <li>Digital Electronics</li>
-                                <li>Computer Hardware</li>
-                                <li>Embedded Systems</li>
-                                <li>Computer Networks</li>
-                            </ul>
-                        </li>
                         <li><strong>Honours & Awards:</strong>
                             <ul>
                                 <li>Top 30 ECE Student (out of ~450 students, 2025–2026)</li>
@@ -408,36 +506,45 @@
                 <h2>Experience</h2>
 
                 <div class="item">
-                    <h3><span>Microchip Technology</span> <span class="date">May 2026 - Present</span></h3>
-                    <p class="item-context">FPGA Software Engineering Intern | Toronto, ON</p>
+                    <h3><span>FPGA Software Engineering Intern</span> <span class="date">May 2026 - Present</span>
+                    </h3>
+                    <p class="item-context">Microchip Technology | Toronto, ON | 16-month PEY</p>
                     <ul>
-                        <li>Currently completing my 16-month Professional Experience Year (PEY) internship.</li>
-                        <li>Developing C++-based EDA/CAD tools for FPGA design flows.</li>
+                        <li>Developing and migrating core C++ functionality in the synthesis stage of internal FPGA
+                            design flows, moving legacy code paths onto modernized implementations.</li>
+                        <li>Debugging interoperability failures between third-party EDA libraries and internal tooling,
+                            tracing root causes through multi-million-line Verilog netlists of hierarchical designs with
+                            DSP blocks, inferred memories, and multiple clock domains.</li>
+                        <li>Writing Python netlist post-processing utilities that keep output compatible across stages
+                            of the FPGA compilation pipeline.</li>
+                        <li>Building automated Bash and Tcl test infrastructure that validates end-to-end design flows
+                            across a suite of benchmark designs.</li>
                     </ul>
                 </div>
 
                 <div class="item">
-                    <h3><span>University of Toronto ECE</span> <span class="date">May 2025 - June 2026</span></h3>
-                    <p class="item-context">Software Research Intern</p>
+                    <h3><span>Undergraduate Researcher</span> <span class="date">May 2025 - June 2026</span></h3>
+                    <p class="item-context">University of Toronto ECE | Toronto, ON</p>
                     <ul>
-                        <li>Developed PiazzaPlus, a Chrome extension for Piazza with a Flask backend that enhanced
-                            Piazza by enabling students to discover relevant discussions faster through hybrid semantic
-                            + keyword search.</li>
-                        <li>Improved search quality by 120% in MAP and 152% in MRR over Piazza's native search.</li>
-                        <li>Supervised by Professor Salma Emara.</li>
-                        <li>Co-authored a peer-reviewed research paper and presented findings at the ASEE Annual
-                            Conference in Charlotte, NC. (<a href="https://peer.asee.org/61076" target="_blank">View
-                                Paper</a>)</li>
+                        <li>Selected for the J. Edgar McAllister Undergraduate Summer Research Fellowship, working
+                            full-time over the summer and continuing part-time through the following academic year up to
+                            the paper's presentation.</li>
+                        <li>Developed the hybrid semantic and keyword retrieval pipeline behind PiazzaPlus, deployed
+                            through a custom Flask backend.</li>
+                        <li>Designed and ran the evaluation against Piazza's native search, improving MAP by 102.5%,
+                            MRR by 143.5%, and P@3 by 72.4%.</li>
+                        <li>Authored and presented the resulting paper as first author at the ASEE Annual Conference &
+                            Exposition, supervised by Professor Salma Emara.</li>
                     </ul>
                 </div>
 
                 <div class="item">
-                    <h3><span>Jitterware Inc.</span> <span class="date">Feb. 2025 - Mar. 2025</span></h3>
-                    <p class="item-context">PCB Engineering Intern</p>
+                    <h3><span>PCB Engineering Intern</span> <span class="date">Feb. 2025 - Mar. 2025</span></h3>
+                    <p class="item-context">Jitterware Inc. | Remote</p>
                     <ul>
                         <li>Designed and developed a multilayer distortion pedal PCB prototype in KiCAD for an electric
                             guitar, complete with a power supply, gain knob, volume control, and tone control.</li>
-                        <li>Selected components in a BOM and optimized routing for a PCBA cost of under $20 CAD.</li>
+                        <li>Selected components in a BOM and optimized routing for a PCBA cost of under $10 CAD.</li>
                     </ul>
                 </div>
             </section>
@@ -447,71 +554,111 @@
                 <h2>Projects</h2>
 
                 <div class="item">
-                    <h3><span><a href="https://chromewebstore.google.com/detail/piazzaplus/negphehjimfmgjijfmmocokgfhglclim"
-                                target="_blank">PiazzaPlus</a></span></h3>
-                    <div class="tech-tags">Python • Vector Embeddings • LMMs</div>
+                    <h3><span>Varphi CPU</span> <span class="date">July 2026 - Present</span></h3>
+                    <div class="tech-tags">Verilog • ModelSim • Computer Architecture</div>
                     <ul>
-                        <li>A Chrome extension enhancing Piazza search via hybrid semantic and keyword search.</li>
-                        <li>Designed a custom Flask backend to handle heavy semantic query processing.</li>
-                        <li>Designed a lightweight frontend to improve student workflow.</li>
-                        <li>Significantly outperformed native search metrics (120% improvement in MAP).</li>
-                        <li><a href="https://github.com/ibraheemelsheikha/piazzaplus" target="_blank">GitHub Repo</a>
+                        <li>Designing a configurable finite state machine processor that executes Varphi, a Turing
+                            machine description language, directly in hardware with no program counter and no ALU.</li>
+                        <li>Built a Harvard-architecture datapath in Verilog: a transition-rule ROM addressed by the
+                            current state concatenated with the symbol read from each tape, a latched state register,
+                            per-tape STAY/LEFT/RIGHT pointers, and tape memory that resets the head to the centre of the
+                            address space to maximize runway in both directions.</li>
+                        <li>Parameterized the design over tape count, state width, and symbol width using generate
+                            blocks, so the same RTL elaborates to a single-tape or multi-tape machine. Currently
+                            simulating a two-tape configuration in ModelSim.</li>
+                        <li>Wrote per-module and top-level testbenches, plus a Python visualizer that animates tape head
+                            movement from simulation logs.</li>
+                    </ul>
+                </div>
+
+                <div class="item">
+                    <h3><span>PiazzaPlus</span> <span class="date">May 2025 - June 2026</span></h3>
+                    <div class="tech-tags">Python • ChromaDB • BM25 • Flask • Large Multimodal Models</div>
+                    <ul>
+                        <li>A published Chrome extension that adds hybrid semantic and keyword search to Piazza, so
+                            students can find relevant past discussions instead of reposting them.</li>
+                        <li>Two-stage retrieval: BM25 narrows the corpus to 100 candidates, then cosine similarity over
+                            <code>text-embedding-3-large</code> vectors in ChromaDB reranks them, aggregating per-post
+                            scores across chunks.
+                        </li>
+                        <li>Captioned post images with a vision model and folded the captions into the indexed text,
+                            making diagrams, handwriting, and error screenshots searchable.</li>
+                        <li>Built an incremental indexer that hashes the scraped corpus and embeds only new posts on a
+                            five-minute cycle, served to the extension through a Flask API.</li>
+                        <li><a href="https://chromewebstore.google.com/detail/piazzaplus/negphehjimfmgjijfmmocokgfhglclim"
+                                target="_blank">Chrome Web Store</a> &middot; <a
+                                href="https://github.com/ibraheemelsheikha/piazzaplus" target="_blank">GitHub Repo</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="item">
-                    <h3><span><a href="https://github.com/ibraheemelsheikha/stm32-radar-turret" target="_blank">STM32
-                                Perimeter Defense System</a></span></h3>
-                    <div class="tech-tags">STM32 • Embedded C • Bus Protocols • Python</div>
+                    <h3><span>STM32 Perimeter Defense System</span> <span class="date">Mar. 2026 - Apr. 2026</span>
+                    </h3>
+                    <div class="tech-tags">STM32 • Embedded C • UART / I2C • Python</div>
                     <ul>
-                        <li>Integrated STM32 and ESP32 microcontrollers with ultrasonic and IR sensors to create a
-                            responsive defense mapping system.</li>
-                        <li>Engineered the hardware logic to continuously scan, map, and output tracking data.</li>
-                        <li>Implemented a Python-based real-time perimeter mapping visualizer using Matplotlib to
-                            process and render live UART data streams.</li>
+                        <li>Built the sweep and ranging subsystem of a team-built perimeter scanner on an STM32F446ZE:
+                            a stepper sweeps 360&deg; at 1/8 microstepping and fires an ultrasonic ping every 20
+                            microsteps, giving 4.5&deg; of angular resolution.</li>
+                        <li>Integrated identify-friend-or-foe (IFF) over an IR link, where an ESP32 transmits coded
+                            pulse
+                            frames and the STM32 counts edges in an external interrupt, debouncing at 8 ms and
+                            classifying each frame after a 50 ms quiet gap.</li>
+                        <li>Drove an SSD1306 OLED over I2C for local status and streamed polar contact data over UART at
+                            115200 baud.</li>
+                        <li>Wrote a Matplotlib radar display that plots live contacts with an adjustable range ring,
+                            colouring each by its IFF result.</li>
+                        <li><a href="https://github.com/ibraheemelsheikha/stm32-radar-turret" target="_blank">GitHub
+                                Repo</a></li>
                     </ul>
                 </div>
 
                 <div class="item">
-                    <h3><span><a href="https://github.com/ibraheemelsheikha/embedded-c-reversi" target="_blank">Embedded
-                                C Reversi</a></span></h3>
+                    <h3><span>Embedded C Reversi</span> <span class="date">Mar. 2025 - Apr. 2025</span></h3>
                     <div class="tech-tags">Embedded C • RISC-V Assembly • FPGA</div>
                     <ul>
-                        <li>Developed real-time multiplayer Reversi in embedded C on a RISC-V processor, interfacing a
-                            PS/2 mouse and VGA display through memory-mapped ports.</li>
-                        <li>Implemented and optimized a 60 FPS VGA graphics pipeline via direct memory-mapped
-                            framebuffer and register access, rendering dynamic game elements.</li>
-                        <li>Developed comprehensive firmware game logic including move validation, score tracking, and
-                            win-condition detection.</li>
+                        <li>Built a two-player Reversi game in embedded C on a RISC-V soft processor, driving a VGA
+                            display and a PS/2 mouse entirely through memory-mapped I/O.</li>
+                        <li>Integrated double-buffered rendering: pixels are written straight into the back
+                            framebuffer at a computed word offset, then the buffers swap and the VGA status register is
+                            polled for vertical sync, holding a tear-free 60 Hz.</li>
+                        <li>Decoded PS/2 mouse packets byte by byte out of the data register's RVALID field, put the
+                            mouse into stream mode with the <code>0xF4</code> command, and mapped cursor position onto
+                            board cells.</li>
+                        <li>Wrote the game logic: legal move validation, directional tile flipping, live score
+                            rendering, and win detection.</li>
+                        <li><a href="https://github.com/ibraheemelsheikha/embedded-c-reversi" target="_blank">GitHub
+                                Repo</a></li>
                     </ul>
                 </div>
 
                 <div class="item">
-                    <h3><span>Software-Defined Radio Receiver</span></h3>
+                    <h3><span>Software-Defined Radio Receiver</span> <span class="date">Jan. 2025 - Apr. 2025</span>
+                    </h3>
                     <div class="tech-tags">Altium • LTSpice • PyVISA</div>
                     <ul>
-                        <li>Using agile development, led a team of three to design and manufacture a RX receiver for a
-                            flexible radio transceiver.</li>
-                        <li>Designed a 8-16 MHz bandpass filter, a +/- 0.7 V limiter circuit, a diode ring quadrature
-                            mixer, a 96 kHz cutoff lowpass filter, and a 32 db gain amplifier.</li>
-                        <li>Simulated all subcomponents in LTSpice ensuring they meet interface control document
-                            requirements.</li>
-                        <li>Created and manufactured a multilayer PCB in Altium and routed traces to minimize heat loss,
-                            tested using oscilloscope, waveform generator, power supply, DMM, and PyVISA.</li>
+                        <li>Led a team of three to design, simulate, and manufacture the receive chain for a flexible
+                            radio transceiver.</li>
+                        <li>Designed the analog signal chain (8&ndash;16 MHz bandpass filter, &plusmn;0.7 V limiter,
+                            diode ring quadrature mixer, 96 kHz lowpass filter, 32 dB amplifier), verified it in LTspice
+                            against the interface control
+                            document, and validated the fabricated multilayer Altium PCB
+                            on the bench with PyVISA.</li>
                     </ul>
                 </div>
 
                 <div class="item">
-                    <h3><span>Custom RISC-V CPU</span></h3>
+                    <h3><span>Custom RISC-V CPU</span> <span class="date">Oct. 2024 - Dec. 2024</span></h3>
                     <div class="tech-tags">Verilog • ModelSim • Quartus</div>
                     <ul>
-                        <li>Collaborated with a teammate to implement and debug a RISC-V-inspired CPU from scratch using
-                            Verilog and Quartus Prime Lite, debugged in ModelSim.</li>
-                        <li>Designed and implemented a robust VGA display interface, including memory arbitration logic
-                            and direct framebuffer management.</li>
-                        <li>Developed the Arithmetic Logic Unit (ALU) to handle core instructions (addi, add, sub, xor,
-                            and, or, sw, lw, beq, bne).</li>
+                        <li>Implemented a RISC-V-inspired CPU from scratch in Verilog with a teammate: register file,
+                            ALU, sign-extension unit, controller FSM, datapath muxing, and a memory controller over a
+                            512x32 RAM.</li>
+                        <li>Designed the VGA display interface and the arbitration that lets the processor and the
+                            display adapter share one memory without contention.</li>
+                        <li>Built the ALU to cover addi, add, sub, xor, and, or, sw, lw, beq, and bne, verified against
+                            directed testbenches in ModelSim and synthesized in Quartus Prime Lite.</li>
+                        <li><a href="https://github.com/IbrahimFadel/cpu" target="_blank">GitHub Repo</a></li>
                     </ul>
                 </div>
             </section>
@@ -520,16 +667,37 @@
             <section id="publications">
                 <h2>Publications</h2>
                 <div class="item">
-                    <h3><span>Peer-Reviewed Conference Paper</span> <span class="date">June 2026</span></h3>
-                    <p class="item-context">First Author • ASEE Annual Conference & Exposition</p>
+                    <h3><span>Work-in-Progress: PiazzaPlus&ndash;Enhancing Piazza Search with Semantic Matching</span>
+                        <span class="date">June 2026</span>
+                    </h3>
+                    <p class="item-context">Peer-Reviewed Conference Paper • First Author • ASEE Annual Conference
+                        &amp; Exposition</p>
                     <ul>
-                        <li>First author of and presented a research paper based on the development and integration of
-                            the PiazzaPlus semantic search system.</li>
-                        <li>Supervised by and co-authored with Professor Salma Emara.</li>
-                        <li>Presented work on deploying and evaluating hybrid semantic search for engineering education
-                            at the ASEE Annual Conference in Charlotte, North Carolina.</li>
-                        <li><a href="https://peer.asee.org/61076" target="_blank">View Paper PDF</a></li>
+                        <li>First author, co-authored with Professor Salma Emara.</li>
+                        <li>Presented at the ASEE Annual Conference &amp; Exposition in Charlotte, North Carolina, the
+                            largest engineering education conference in North America, with over 4,000 participants.
+                        </li>
+                        <li>One of a small number of undergraduate presenters on a program dominated by faculty
+                            researchers.</li>
+                        <li>Covered the deployment and evaluation of hybrid semantic search in a live undergraduate
+                            course.</li>
+                        <li><a href="https://peer.asee.org/61076" target="_blank">View Paper</a></li>
                     </ul>
+                </div>
+            </section>
+
+            <!-- SKILLS SECTION -->
+            <section id="skills">
+                <h2>Skills</h2>
+                <div class="item">
+                    <p class="skills-line"><strong>Languages:</strong> C++, C, Embedded C, Verilog, Python, Tcl, Bash
+                    </p>
+                    <p class="skills-line"><strong>Hardware &amp; Embedded:</strong> RTL design, logic synthesis,
+                        computer architecture, RISC-V, FPGAs, EDA, microcontrollers, STM32, UART, SPI, I2C</p>
+                    <p class="skills-line"><strong>Tools:</strong> Quartus Prime, ModelSim, OneSpin, Linux, Docker, Git,
+                        Jira, Confluence</p>
+                    <p class="skills-line"><strong>Systems &amp; Software:</strong> Data structures, algorithms,
+                        operating systems, socket programming, large language models</p>
                 </div>
             </section>
 
@@ -537,7 +705,8 @@
             <section id="contact">
                 <h2>Contact</h2>
                 <div class="item">
-                    <p>I am always open to discussing new professional or academic engineering opportunities.</p>
+                    <p>Always open to discussing research or engineering opportunities. Email is the best way to reach
+                        me.</p>
                     <p style="margin-top: 0.5rem;"><strong>Email:</strong> <a
                             href="mailto:ibraheem.elsheikha@mail.utoronto.ca">ibraheem.elsheikha@mail.utoronto.ca</a>
                     </p>
@@ -551,25 +720,18 @@
 
         <!-- FOOTER SECTION -->
         <footer>
-            <p class="privacy-notice">&copy; 2026 Ibraheem El Sheikha. This website uses Google Analytics and an
-                open-source script to collect generalized, anonymous visitor region data.</p>
+            <p class="privacy-notice">&copy; 2026 Ibraheem El Sheikha. This site uses Google Analytics and records the
+                approximate location (city and country), referring page, and time of each visit.</p>
+
         </footer>
     </div>
 
     <!-- SCRIPT SECTION -->
     <script>
         // --- THEME TOGGLE SCRIPT ---
+        // Initial theme is set by the inline script in <head> (before first paint).
         const toggleBtn = document.getElementById('theme-toggle');
         const root = document.documentElement;
-
-        const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-            root.setAttribute('data-theme', 'dark');
-        } else {
-            root.setAttribute('data-theme', 'light');
-        }
 
         toggleBtn.addEventListener('click', () => {
             const currentTheme = root.getAttribute('data-theme');
@@ -579,37 +741,43 @@
             localStorage.setItem('theme', newTheme);
         });
 
-        // --- VISITOR TRACKING SCRIPT ---
+        // --- VISITOR PING ---
+        // Posts the traffic source to a Cloudflare Worker, which resolves the
+        // city at the edge and forwards it to a private Telegram chat.
         window.addEventListener('load', async () => {
-            if (window.location.search.includes('admin=true')) {
+            const params = new URLSearchParams(window.location.search);
+
+            if (params.get('admin') === 'true') {
                 localStorage.setItem('ignore_visits', 'true');
             }
-            if (localStorage.getItem('ignore_visits') === 'true') {
-                return;
+            if (localStorage.getItem('ignore_visits') === 'true') return;
+
+            // One ping per tab session, so reloads don't re-notify.
+            try {
+                if (sessionStorage.getItem('pinged')) return;
+                sessionStorage.setItem('pinged', '1');
+            } catch (err) {
+                // storage blocked (private mode): fall through and ping once
             }
 
-            const ntfyUrl = 'https://ntfy.sh/ibraheem-portfolio-visits-99x7';
-
             try {
-                // 1. Identify the traffic source
-                const rawReferrer = document.referrer;
-                const source = rawReferrer ? new URL(rawReferrer).hostname : 'Direct Entry / Typed URL';
+                // A tagged link beats the referrer, which LinkedIn and most
+                // in-app browsers strip entirely.
+                const tagged = params.get('utm_source') || params.get('ref');
+                const source = tagged
+                    ? tagged
+                    : document.referrer
+                        ? new URL(document.referrer).hostname
+                        : 'Direct / typed URL';
 
-                // 2. Fetch location and ISP data
-                const geoResponse = await fetch('https://get.geojs.io/v1/ip/geo.json');
-                const geoData = await geoResponse.json();
-
-                const city = geoData.city || 'Unknown City';
-                const country = geoData.country || 'Unknown Country';
-                const isp = geoData.organization_name || 'Unknown ISP';
-
-                // 3. Send push notification
-                await fetch(ntfyUrl, {
+                await fetch('https://visitor-worker.ibraheemelsheikha.workers.dev/', {
                     method: 'POST',
-                    body: `New visitor from ${city}, ${country}!\nSource: ${source}\nISP: ${isp}`
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ source }),
+                    keepalive: true
                 });
             } catch (err) {
-                console.error('Silent ping failed');
+                // never let tracking break the page
             }
         });
     </script>
